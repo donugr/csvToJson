@@ -306,6 +306,66 @@ csvToJson.fieldDelimiter(',')
 
 ```
 
+### ADDED FEATURES
+
+All Chaining Pattern
+
+#### Joining Field
+```js
+let csvToJson = require('convert-csv-to-json');
+
+csvToJson.joinField({
+      inputsFieldKeys: ["date", "time"], // (required) Array of string keys minimum length 2
+      newField: "datetime", // (required) new field with key value
+      method: "join", // (required) join,sum,divide,multiply
+      delimiter: " ", // only for method 'join'
+    })
+    .generateJsonFileFromCsv(fileInputName,fileOutputName);
+```
+
+#### MomentJS format Field
+```js
+let csvToJson = require('convert-csv-to-json');
+
+csvToJson.formatMoment({
+     "KEY_STRING_OF_OBJECT": {
+        targetformat: "unix", // unix,seconds,or all format supported by MomentJS eg. 'YYYY-MM-DD HH:mm:ss'
+        sourceformat: "YYYY.MM.DD HH:mm:ss", // (optional) format value string, if omited try using default momentjs format 
+        newfield: "datetimeunix", (optional) new field with key value
+      })
+    .generateJsonFileFromCsv(fileInputName,fileOutputName);
+```
+
+#### Add Fields
+```js
+let csvToJson = require('convert-csv-to-json');
+
+csvToJson.addCustomField({
+      "KEY_STRING_OF_OBJECT": "VALUE_OF_KEY", // Add custom key value to generate object
+    })
+    .generateJsonFileFromCsv(fileInputName,fileOutputName);
+```
+
+#### Rename Fields
+```js
+let csvToJson = require('convert-csv-to-json');
+
+csvToJson.renameField({
+      "EXIST_KEY_STRING_OF_OBJECT": "NEW_KEY_STRING_OF_OBJECT", // Rename Key in Result Object
+    })
+    .generateJsonFileFromCsv(fileInputName,fileOutputName);
+```
+
+#### Remove Fields
+```js
+let csvToJson = require('convert-csv-to-json');
+
+csvToJson.removeField([
+      "EXIST_KEY_STRING_OF_OBJECT" // Array of String Keys Existing in object
+    ])
+    .generateJsonFileFromCsv(fileInputName,fileOutputName);
+```
+
 
 ## Development
 * Download all csvToJson dependencies:
