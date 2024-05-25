@@ -24,6 +24,8 @@ show your :heart: and support.
 
 MomentJS: [https://github.com/moment/moment/](https://github.com/moment/moment/).
 
+crypto: build in nodejs
+
 
 ## Table of Contents
 
@@ -380,6 +382,16 @@ let csvToJson = require('convert-csv-to-json');
 csvToJson.removeField([
       "EXIST_KEY_STRING_OF_OBJECT" // Array of String Keys Existing in object
     ])
+    .generateJsonFileFromCsv(fileInputName,fileOutputName);
+```
+
+#### Others format Field
+```js
+let csvToJson = require('convert-csv-to-json');
+
+csvToJson.formatOthers({
+      "EXIST_KEY_STRING_OF_OBJECT": "FORMAT", // format currently available: md5
+    })
     .generateJsonFileFromCsv(fileInputName,fileOutputName);
 ```
 
