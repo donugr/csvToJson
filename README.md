@@ -11,12 +11,18 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
+## Original Project
 **This project is not dependent on others packages or libraries.**
 
 This repository uses [![GitHub Action  - iuccio/npm-semantic-publish-action@latest](https://img.shields.io/badge/GitHub_Action_-iuccio%2Fnpm--semantic--publish--action%40latest-2ea44f)](https://github.com/marketplace/actions/npm-semver-publish)
 
 Follow [me](https://github.com/iuccio), and consider starring the project to
 show your :heart: and support.
+
+## This Fork Project
+**This project is dependent on others packages or libraries.**
+MomentJS: [https://github.com/moment/moment/](https://github.com/moment/moment/).
+
 
 ## Table of Contents
 
