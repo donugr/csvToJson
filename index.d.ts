@@ -3,7 +3,12 @@ declare module 'convert-csv-to-json' {
     /**
      * Prints a digit as Number type (for example 32 instead of '32')
      */
-    formatValueByType(active: boolean): this;
+    formatValueByType(active: any): this;
+    addCustomField(arrayOfKeyValue: any): this;
+    renameField(arrayOfKeyValue: any): this;
+    removeField(arrayOfKeyString: string[]): this;
+    formatMoment(active: any): this;
+    joinField(active: any): this;
 
     /**
      *
