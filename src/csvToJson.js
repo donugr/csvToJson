@@ -4,6 +4,7 @@ let fileUtils = require("././util/fileUtils");
 let stringUtils = require("././util/stringUtils");
 let jsonUtils = require("././util/jsonUtils");
 let moment = require("moment");
+const crypto = require('crypto')
 const newLine = /\r?\n/;
 const defaultFieldDelimiter = ";";
 
@@ -175,6 +176,8 @@ const convertMomentMain = (jsonObject, configObj) => {
   return jsonObject;
 };
 
+
+
 const convertMoment = ({ value, targetformat, sourceformat = undefined }) => {
   let res;
   if (sourceformat) {
@@ -205,6 +208,36 @@ const convertMoment = ({ value, targetformat, sourceformat = undefined }) => {
   return res;
 };
 
+const convertOthersMain = (jsonObject, configObj) => {
+  if (!jsonObject || !configObj) {
+    return jsonObject;
+  }
+  if (typeof configObj != "boolean" && typeof configObj == "object") {
+    let cleanKeys = [];
+    Object.keys(configObj).forEach((keyjs) => {
+      if (Object.keys(jsonObject).includes(keyjs)) {
+        cleanKeys.push(keyjs);
+      }
+    });
+    cleanKeys.forEach((propertyName) => {
+      let targetformat = configObj[propertyName];
+      if (targetformat) {
+        let convothers = jsonObject[propertyName];
+        if(targetformat=="md5"){
+          convothers = crypto.createHash('md5').update(convothers).digest("hex");
+        }
+        jsonObject[propertyName] = convothers;
+      } else {
+        jsonObject[propertyName] = stringUtils.getValueFormatByType(
+          jsonObject[propertyName]
+        );
+      }
+    });
+    return jsonObject;
+  }
+  return jsonObject;
+};
+
 class CsvToJson {
   formatValueByType(active) {
     this.printValueFormatByType = active;
@@ -233,6 +266,10 @@ class CsvToJson {
 
   formatMoment(active) {
     this.formatMomentFieldActive = active;
+    return this;
+  }
+  formatOthers(active) {
+    this.formatOthersFieldActive = active;
     return this;
   }
 
@@ -313,19 +350,22 @@ class CsvToJson {
       }
       if (stringUtils.hasContent(currentLine)) {
         let smtData = this.buildJsonResult(headers, currentLine);
+        smtData = this.addCustomFieldActive
+          ? {
+              ...smtData,
+              ...this.addCustomFieldActive,
+            }
+          : smtData;
         let sssjsonObject = joinMergeField(smtData, this.joinFieldActive);
         let xxxjsonObject = convertMomentMain(
           sssjsonObject,
           this.formatMomentFieldActive
-        );
-
-        let resultfix = this.addCustomFieldActive
-          ? {
-              ...xxxjsonObject,
-              ...this.addCustomFieldActive,
-            }
-          : xxxjsonObject;
-        resultfix = renameFieldProject(resultfix,this.renameFieldActive);
+        );      
+        xxxjsonObject = convertOthersMain(
+          xxxjsonObject,
+          this.formatOthersFieldActive
+        );  
+        let resultfix = renameFieldProject(xxxjsonObject,this.renameFieldActive);
         resultfix = removeFieldProject(resultfix,this.removeFieldActive);
         jsonResult.push(resultfix);
       }
