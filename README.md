@@ -333,12 +333,12 @@ All Chaining Pattern
 ```js
 let csvToJson = require('convert-csv-to-json');
 
-csvToJson.joinField({
+csvToJson.joinField([{
       inputsFieldKeys: ["date", "time"], // (required) Array of string keys minimum length 2
       newField: "datetime", // (required) new field with key value
       method: "join", // (required) join,sum,divide,multiply
       delimiter: " ", // only for method 'join'
-    })
+    }])
     .generateJsonFileFromCsv(fileInputName,fileOutputName);
 ```
 
