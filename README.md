@@ -99,7 +99,7 @@ This package is compatible with ![JavaScript](https://img.shields.io/badge/javas
 ## Install npm *convert-csv-to-json package*
 Go to NPM package [convert-csv-to-json](https://www.npmjs.com/package/convert-csv-to-json).
 
-### Install
+### Install Original Version
 Install package in your *package.json*
 ```bash
 $ npm install convert-csv-to-json --save
@@ -107,6 +107,16 @@ $ npm install convert-csv-to-json --save
 Install package on your machine
 ```bash
 $ npm install -g convert-csv-to-json
+```
+
+### Install This Fork Version
+Install package in your *package.json*
+```bash
+$ npm install https://github.com/donugr/csvToJson --save
+```
+Install package on your machine
+```bash
+$ npm install -g https://github.com/donugr/csvToJson
 ```
 
 ### Usage
