@@ -44,14 +44,14 @@ exports.removeField = function (arrayOfKeyString=[]) {
 };
 
 exports.formatMoment = function (active = undefined) {
-  if(!active){
+  if(active){
     csvToJson.formatMoment(active);
   }  
   return this;
 };
 
 exports.formatOthers = function (active = undefined) {
-  if(!active){
+  if(active){
     csvToJson.formatOthers(active);
   }  
   return this;
