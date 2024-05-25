@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iuccio/CSVtoJSON.git"
+    "url": "git+https://github.com/donugr/csvToJson/CSVtoJSON.git"
   },
   "keywords": [
     "csv",
@@ -40,9 +40,12 @@
   "author": "iuccio",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/iuccio/CSVtoJSON/issues"
+    "url": "https://github.com/donugr/csvToJson/issues"
   },
-  "homepage": "https://github.com/iuccio/CSVtoJSON#readme",
+  "homepage": "https://github.com/donugr/csvToJson/CSVtoJSON#readme",
+  "dependencies": {
+    "moment": "^2.30.1"
+  },
   "devDependencies": {
     "jest": "^29.7.0"
   }
