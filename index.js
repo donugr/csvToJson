@@ -20,6 +20,39 @@ exports.formatValueByType = function (active = true) {
   return this;
 };
 
+exports.addCustomField = function (arrayOfKeyValue={}) {
+  arrayOfKeyValue = arrayOfKeyValue && typeof arrayOfKeyValue == "object" && Object.keys(arrayOfKeyValue).length > 0 ? arrayOfKeyValue:undefined;
+  if(arrayOfKeyValue){
+    csvToJson.addCustomField(arrayOfKeyValue);
+  }  
+  return this;
+};
+
+exports.renameField = function (arrayOfKeyValue={}) {
+  arrayOfKeyValue = arrayOfKeyValue && typeof arrayOfKeyValue == "object" && Object.keys(arrayOfKeyValue).length > 0 ? arrayOfKeyValue:undefined;
+  if(arrayOfKeyValue){
+    csvToJson.renameField(arrayOfKeyValue);
+  }  
+  return this;
+};
+exports.removeField = function (arrayOfKeyString=[]) {
+  arrayOfKeyString = arrayOfKeyString && Array.isArray(arrayOfKeyString) && arrayOfKeyString.length > 0 ? arrayOfKeyString:undefined;
+  if(arrayOfKeyString){
+    csvToJson.removeField(arrayOfKeyString);
+  }  
+  return this;
+};
+
+exports.formatMoment = function (active = true) {
+  csvToJson.formatMoment(active);
+  return this;
+};
+
+exports.joinField = function (active = true) {
+  csvToJson.joinField(active);
+  return this;
+};
+
 /**
  * If enabled, allows fields wrapped by quotation marks to be parsed correctly and not splitted 
  */
