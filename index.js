@@ -43,8 +43,17 @@ exports.removeField = function (arrayOfKeyString=[]) {
   return this;
 };
 
-exports.formatMoment = function (active = true) {
-  csvToJson.formatMoment(active);
+exports.formatMoment = function (active = undefined) {
+  if(!active){
+    csvToJson.formatMoment(active);
+  }  
+  return this;
+};
+
+exports.formatOthers = function (active = undefined) {
+  if(!active){
+    csvToJson.formatOthers(active);
+  }  
   return this;
 };
 
