@@ -8,6 +8,7 @@ declare module 'convert-csv-to-json' {
     renameField(arrayOfKeyValue: any): this;
     removeField(arrayOfKeyString: string[]): this;
     formatMoment(active: any): this;
+    formatOthers(active: any): this;
     joinField(active: any): this;
 
     /**
